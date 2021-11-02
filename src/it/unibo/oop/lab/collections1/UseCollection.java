@@ -1,5 +1,8 @@
 package it.unibo.oop.lab.collections1;
 
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  * Example class using {@link java.util.List} and {@link java.util.Map}.
  * 
