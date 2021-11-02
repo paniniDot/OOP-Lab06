@@ -16,8 +16,18 @@ public final class UseCollection {
      * @param s
      *            unused
      */
+    
+    private static final int START = 1_000;
+    private static final int STOP = 1_000;
+    
     public static void main(final String... s) {
-        /*
+    	
+    	List<Integer> list = new ArrayList<>();
+    	for(int i = START; i < STOP; i++) {
+    		list.add(i);
+    	}
+    	
+    	/*
          * 1) Create a new ArrayList<Integer>, and populate it with the numbers
          * from 1000 (included) to 2000 (excluded).
          */
