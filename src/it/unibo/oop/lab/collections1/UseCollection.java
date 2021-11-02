@@ -37,6 +37,10 @@ public final class UseCollection {
     	List<Integer> list2 = new LinkedList<>(list);
     	
     	swapFirstLastElemFromList(list);
+    	
+    	for(Integer i : list) {
+    		System.out.println(i);
+    	}
     	/*
          * 1) Create a new ArrayList<Integer>, and populate it with the numbers
          * from 1000 (included) to 2000 (excluded).
