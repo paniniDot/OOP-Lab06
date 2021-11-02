@@ -18,8 +18,14 @@ public final class UseCollection {
      *            unused
      */
     
+    private static void swapFirstLastElemFromList(List<Integer> list) {
+    	Integer first = list.get(0);
+    	list.set(0, list.get(list.size()));
+    	list.set(list.size(), first);
+    }
+    
     private static final int START = 1_000;
-    private static final int STOP = 1_000;
+    private static final int STOP = 2_000;
     
     public static void main(final String... s) {
     	
@@ -30,6 +36,7 @@ public final class UseCollection {
     	
     	List<Integer> list2 = new LinkedList<>(list);
     	
+    	swapFirstLastElemFromList(list);
     	/*
          * 1) Create a new ArrayList<Integer>, and populate it with the numbers
          * from 1000 (included) to 2000 (excluded).
