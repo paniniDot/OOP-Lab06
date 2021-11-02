@@ -18,14 +18,29 @@ public final class UseCollection {
      *            unused
      */
     
+    private static int lastElemIndex(List<Integer> list) {
+    	return list.size() - 1;
+    }
+    
     private static void swapFirstLastElemFromList(List<Integer> list) {
-    	Integer first = list.get(0);
-    	list.set(0, list.get(list.size()));
-    	list.set(list.size(), first);
+    	Integer firstInt = list.get(0);
+    	list.set(0, list.get(lastElemIndex(list)));
+    	list.set(lastElemIndex(list), firstInt);
+    }
+    
+    private static long evalutingListPerformance(List<Integer> list) {
+    	long time = System.nanoTime();
+    	for (int i = 0; i < ENTRIES; i++) {
+    		list.add(0, i);
+    	}
+    	time = System.nanoTime() - time;
+    	return time;
     }
     
     private static final int START = 1_000;
     private static final int STOP = 2_000;
+    private static final int ENTRIES = 100_000;
+    private static final int TO_MS = 1_000_000;
     
     public static void main(final String... s) {
     	
@@ -41,6 +56,13 @@ public final class UseCollection {
     	for(Integer i : list) {
     		System.out.println(i);
     	}
+    	
+    	System.out.println("Time required to add 100.000 elements to ArrayList: " 
+    			+ evalutingListPerformance(list) / TO_MS + "ms");
+    	
+    	System.out.println("Time required to add 100.000 elements to LinkedList: " 
+    			+ evalutingListPerformance(list2) / TO_MS + "ms");
+    	
     	/*
          * 1) Create a new ArrayList<Integer>, and populate it with the numbers
          * from 1000 (included) to 2000 (excluded).
