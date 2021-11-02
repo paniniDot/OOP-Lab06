@@ -2,6 +2,7 @@ package it.unibo.oop.lab.collections1;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * Example class using {@link java.util.List} and {@link java.util.Map}.
@@ -26,6 +27,8 @@ public final class UseCollection {
     	for(int i = START; i < STOP; i++) {
     		list.add(i);
     	}
+    	
+    	List<Integer> list2 = new LinkedList<>(list);
     	
     	/*
          * 1) Create a new ArrayList<Integer>, and populate it with the numbers
