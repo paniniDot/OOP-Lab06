@@ -35,7 +35,7 @@ public class SocialNetworkUserImpl<U extends User> extends UserImpl implements S
      * 
      * think of what type of keys and values would best suit the requirements
      */
-	Map<String, Set<U>> friendsList = new HashMap<>();
+	private Map<String, Set<U>> friendsList;
 	
 	
     /*
@@ -64,7 +64,7 @@ public class SocialNetworkUserImpl<U extends User> extends UserImpl implements S
      */
     public SocialNetworkUserImpl(final String name, final String surname, final String user, final int userAge) {
         super(name, surname, user, userAge);
-        this.friendsList = null;
+        this.friendsList = new HashMap<>();
     }
     
     public SocialNetworkUserImpl(final String name, final String surname, final String user) {
@@ -77,24 +77,23 @@ public class SocialNetworkUserImpl<U extends User> extends UserImpl implements S
      * Implements the methods below
      */
     
-    
-    /* controlla correttezza di sta robaccia!!*/
-    private boolean addUser(final String circle, final U user) {
-    	Set<U> set = this.friendsList.get(circle); 
-    	if(set == null) {
-    		set = new HashSet<U>();
-    	}
-    	return set.add(user);
-    }
-    
     @Override
     public boolean addFollowedUser(final String circle, final U user) {
-        return addUser(circle, user);
+    	Set<U> set = this.friendsList.get(circle); 
+    	if(set == null) {
+    		set = new HashSet<>();
+    		this.friendsList.put(circle, set);
+    	}
+    	return set.add(user);
     }
 
     @Override
     public Collection<U> getFollowedUsersInGroup(final String groupName) {
-        return new HashSet<U>(this.friendsList.get(groupName));
+        Collection<U> set = new HashSet<>();
+    	if (this.friendsList.get(groupName) != null ) {
+        	set.addAll(this.friendsList.get(groupName));
+        }
+        return set;
     }
 
     @Override
