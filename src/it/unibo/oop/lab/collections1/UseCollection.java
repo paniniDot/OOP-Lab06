@@ -28,7 +28,7 @@ public final class UseCollection {
     	list.set(lastElemIndex(list), firstInt);
     }
     
-    private static long evalutingListPerformance(List<Integer> list) {
+    private static long evalutingListAddingPerformance(List<Integer> list) {
     	long time = System.nanoTime();
     	for (int i = 0; i < ENTRIES; i++) {
     		list.add(0, i);
@@ -36,6 +36,20 @@ public final class UseCollection {
     	time = System.nanoTime() - time;
     	return time;
     }
+ 
+    private static int getMiddlePos(List<Integer> list) {
+    	return (list.size() / 2) + 1;
+    }
+    
+    private static long evalutingListExtractElPerformance(List<Integer> list) {
+    	int numReading = 1000;
+    	long time = System.nanoTime();
+    	for (int i = 0; i < numReading; i++) {
+    		list.get(getMiddlePos(list));
+    	}
+    	time = System.nanoTime() - time;
+    	return time;
+    }   
     
     private static final int START = 1_000;
     private static final int STOP = 2_000;
@@ -58,10 +72,17 @@ public final class UseCollection {
     	}
     	
     	System.out.println("Time required to add 100.000 elements to ArrayList: " 
-    			+ evalutingListPerformance(list) / TO_MS + "ms");
+    			+ evalutingListAddingPerformance(list) / TO_MS + "ms");
     	
     	System.out.println("Time required to add 100.000 elements to LinkedList: " 
-    			+ evalutingListPerformance(list2) / TO_MS + "ms");
+    			+ evalutingListAddingPerformance(list2) / TO_MS + "ms");
+    	
+    	System.out.println("Time required to read 1.000 elements to ArrayList: " 
+    			+ evalutingListExtractElPerformance(list) / TO_MS + "ms");
+    	
+    	System.out.println("Time required to read 1.000 elements to LinkedList: " 
+    			+ evalutingListExtractElPerformance(list2) / TO_MS + "ms");
+    	
     	
     	/*
          * 1) Create a new ArrayList<Integer>, and populate it with the numbers
