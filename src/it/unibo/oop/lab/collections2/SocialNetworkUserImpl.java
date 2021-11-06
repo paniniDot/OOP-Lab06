@@ -1,5 +1,6 @@
 package it.unibo.oop.lab.collections2;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -93,12 +94,16 @@ public class SocialNetworkUserImpl<U extends User> extends UserImpl implements S
 
     @Override
     public Collection<U> getFollowedUsersInGroup(final String groupName) {
-        return null;
+        return new HashSet<U>(this.friendsList.get(groupName));
     }
 
     @Override
     public List<U> getFollowedUsers() {
-        return null;
+        List<U> list = new ArrayList<>();
+        for(Entry<String, Set<U>> entry : this.friendsList.entrySet()) {
+        	list.addAll(entry.getValue());
+        }
+        return list;
     }
 
 }
