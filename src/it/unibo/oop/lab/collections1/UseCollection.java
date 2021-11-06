@@ -27,7 +27,7 @@ public final class UseCollection {
     	list.set(lastElemIndex(list), firstInt);
     }
     
-    private static long evalutingListAddingPerformance(List<Integer> list) {
+    private static long evalutingListAddingPerformance(List<? super Integer> list) {
     	long time = System.nanoTime();
     	for (int i = 0; i < ENTRIES; i++) {
     		list.add(0, i);
@@ -36,11 +36,11 @@ public final class UseCollection {
     	return time;
     }
  
-    private static int getMiddlePos(List<Integer> list) {
+    private static int getMiddlePos(List<?> list) {
     	return (list.size() / 2) + 1;
     }
     
-    private static long evalutingListExtractElPerformance(List<Integer> list) {
+    private static long evalutingListExtractElPerformance(List<?> list) {
     	int numReading = 1000;
     	long time = System.nanoTime();
     	for (int i = 0; i < numReading; i++) {
@@ -50,9 +50,9 @@ public final class UseCollection {
     	return time;
     }   
     
-    private static long getWorldPopulation(Map<String, Integer> map) {
+    private static long getWorldPopulation(Map<? extends String, ? extends Long> map) {
     	long population = 0;
-    	for (Entry<String, Integer> entry : map.entrySet()) {
+    	for (Entry<? extends String, ? extends Long> entry : map.entrySet()) {
     		population += entry.getValue();
     	}
     	return population;
@@ -92,13 +92,13 @@ public final class UseCollection {
     			+ evalutingListExtractElPerformance(list2) / TO_MS + "ms");
     	
     	
-    	Map<String, Integer> countries = new HashMap<>();
-    	countries.put("Africa", (int)1_110_635_000L);
-    	countries.put("Americas", 972_005_000);
-    	countries.put("Antartica", 0);
-    	countries.put("Asia", (int)4_298_723_000L);
-    	countries.put("Europe", 742_452_000);
-    	countries.put("Oceania", 38_304_000);
+    	Map<String, Long> countries = new HashMap<>();
+    	countries.put("Africa", 1_110_635_000L);
+    	countries.put("Americas", 972_005_000L);
+    	countries.put("Antartica", 0L);
+    	countries.put("Asia", 4_298_723_000L);
+    	countries.put("Europe", 742_452_000L);
+    	countries.put("Oceania", 38_304_000L);
     	
     	System.out.println("World Population : " + getWorldPopulation(countries));
     	
