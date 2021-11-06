@@ -1,8 +1,6 @@
 package it.unibo.oop.lab.collections1;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  * Example class using {@link java.util.List} and {@link java.util.Map}.
@@ -82,6 +80,15 @@ public final class UseCollection {
     	
     	System.out.println("Time required to read 1.000 elements to LinkedList: " 
     			+ evalutingListExtractElPerformance(list2) / TO_MS + "ms");
+    	
+    	
+    	Map<String, Integer> countries = new HashMap<>();
+    	countries.put("Africa", (int)1_110_635_000L);
+    	countries.put("Americas", 972_005_000);
+    	countries.put("Antartica", 0);
+    	countries.put("Asia", (int)4_298_723_000L);
+    	countries.put("Europe", 742_452_000);
+    	countries.put("Oceania", 38_304_000);
     	
     	
     	/*
