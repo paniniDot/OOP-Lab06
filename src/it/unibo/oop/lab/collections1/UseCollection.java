@@ -1,6 +1,7 @@
 package it.unibo.oop.lab.collections1;
 
 import java.util.*;
+import java.util.Map.Entry;
 
 /**
  * Example class using {@link java.util.List} and {@link java.util.Map}.
@@ -49,6 +50,15 @@ public final class UseCollection {
     	return time;
     }   
     
+    private static long getWorldPopulation(Map<String, Integer> map) {
+    	long population = 0;
+    	for (Entry<String, Integer> entry : map.entrySet()) {
+    		population += entry.getValue();
+    	}
+    	return population;
+    }
+    
+    
     private static final int START = 1_000;
     private static final int STOP = 2_000;
     private static final int ENTRIES = 100_000;
@@ -90,6 +100,7 @@ public final class UseCollection {
     	countries.put("Europe", 742_452_000);
     	countries.put("Oceania", 38_304_000);
     	
+    	System.out.println("World Population : " + getWorldPopulation(countries));
     	
     	/*
          * 1) Create a new ArrayList<Integer>, and populate it with the numbers
