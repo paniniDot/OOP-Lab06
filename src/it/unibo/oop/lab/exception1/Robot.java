@@ -84,12 +84,8 @@ public class Robot {
      * @return true if robot gets moved, false otherwise
      */
     private void moveToPosition(final int newX, final int newY) {
-        if (this.isBatteryEnoughToMove()) {
             this.environment.move(newX, newY);
             this.consumeBatteryForMovement();
-        } else {
-            this.log("Can not move to position(" + newX + "," + newY + "). Not enough battery.");
-        }
     }
 
     /**
