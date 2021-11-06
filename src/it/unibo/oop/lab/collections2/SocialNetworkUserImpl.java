@@ -2,8 +2,11 @@ package it.unibo.oop.lab.collections2;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 /**
  * 
@@ -20,7 +23,6 @@ import java.util.Map;
  */
 public class SocialNetworkUserImpl<U extends User> extends UserImpl implements SocialNetworkUser<U> {
 
-    Map<String, User> friendList = new HashMap<>();
 	/*
      * 
      * [FIELDS]
@@ -32,7 +34,9 @@ public class SocialNetworkUserImpl<U extends User> extends UserImpl implements S
      * 
      * think of what type of keys and values would best suit the requirements
      */
-
+	Map<String, Set<U>> friendsList = new HashMap<>();
+	
+	
     /*
      * [CONSTRUCTORS]
      * 
@@ -59,6 +63,11 @@ public class SocialNetworkUserImpl<U extends User> extends UserImpl implements S
      */
     public SocialNetworkUserImpl(final String name, final String surname, final String user, final int userAge) {
         super(name, surname, user, userAge);
+        this.friendsList = null;
+    }
+    
+    public SocialNetworkUserImpl(final String name, final String surname, final String user) {
+        this(name, surname, user, -1);
     }
 
     /*
@@ -66,10 +75,20 @@ public class SocialNetworkUserImpl<U extends User> extends UserImpl implements S
      * 
      * Implements the methods below
      */
-
+    
+    
+    /* controlla correttezza di sta robaccia!!*/
+    private boolean addUser(final String circle, final U user) {
+    	Set<U> set = this.friendsList.get(circle); 
+    	if(set == null) {
+    		set = new HashSet<U>();
+    	}
+    	return set.add(user);
+    }
+    
     @Override
     public boolean addFollowedUser(final String circle, final U user) {
-        return false;
+        return addUser(circle, user);
     }
 
     @Override
