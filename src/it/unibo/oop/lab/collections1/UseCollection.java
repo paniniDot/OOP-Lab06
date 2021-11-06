@@ -17,17 +17,17 @@ public final class UseCollection {
      *            unused
      */
     
-    private static int lastElemIndex(List<Integer> list) {
+    private static int lastElemIndex(final List<Integer> list) {
     	return list.size() - 1;
     }
     
-    private static void swapFirstLastElemFromList(List<Integer> list) {
+    private static void swapFirstLastElemFromList(final List<Integer> list) {
     	Integer firstInt = list.get(0);
     	list.set(0, list.get(lastElemIndex(list)));
     	list.set(lastElemIndex(list), firstInt);
     }
     
-    private static long evalutingListAddingPerformance(List<? super Integer> list) {
+    private static long evalutingListAddingPerformance(final List<? super Integer> list) {
     	long time = System.nanoTime();
     	for (int i = 0; i < ENTRIES; i++) {
     		list.add(0, i);
@@ -36,11 +36,11 @@ public final class UseCollection {
     	return time;
     }
  
-    private static int getMiddlePos(List<?> list) {
+    private static int getMiddlePos(final List<?> list) {
     	return (list.size() / 2) + 1;
     }
     
-    private static long evalutingListExtractElPerformance(List<?> list) {
+    private static long evalutingListExtractElPerformance(final List<?> list) {
     	int numReading = 1000;
     	long time = System.nanoTime();
     	for (int i = 0; i < numReading; i++) {
@@ -50,7 +50,7 @@ public final class UseCollection {
     	return time;
     }   
     
-    private static long getWorldPopulation(Map<? extends String, ? extends Long> map) {
+    private static long getWorldPopulation(final Map<? extends String, ? extends Long> map) {
     	long population = 0;
     	for (Entry<? extends String, ? extends Long> entry : map.entrySet()) {
     		population += entry.getValue();
@@ -73,12 +73,12 @@ public final class UseCollection {
     
     public static void main(final String... s) {
     	
-    	List<Integer> list = new ArrayList<>();
+    	final List<Integer> list = new ArrayList<>();
     	for(int i = START; i < STOP; i++) {
     		list.add(i);
     	}
     	
-    	List<Integer> list2 = new LinkedList<>(list);
+    	final List<Integer> list2 = new LinkedList<>(list);
     	
     	swapFirstLastElemFromList(list);
     	
@@ -99,7 +99,7 @@ public final class UseCollection {
     			+ evalutingListExtractElPerformance(list2) / TO_MS + "ms");
     	
     	
-    	Map<String, Long> countries = new HashMap<>();
+    	final Map<String, Long> countries = new HashMap<>();
     	countries.put("Africa", AFRICA_POPULATION);
     	countries.put("Americas", AMERICAS_POPULATION);
     	countries.put("Antartica", ANTARCTICA_POPULATION);
