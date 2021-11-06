@@ -64,6 +64,13 @@ public final class UseCollection {
     private static final int ENTRIES = 100_000;
     private static final int TO_MS = 1_000_000;
     
+    private static final long AFRICA_POPULATION = 1_110_635_000L;
+    private static final long AMERICAS_POPULATION = 972_005_000L;
+    private static final long ANTARCTICA_POPULATION = 0L;
+    private static final long ASIA_POPULATION = 4_298_723_000L;
+    private static final long EUROPE_POPULATION = 742_452_000L;
+    private static final long OCEANIA_POPULATION = 38_304_000L;
+    
     public static void main(final String... s) {
     	
     	List<Integer> list = new ArrayList<>();
@@ -93,12 +100,12 @@ public final class UseCollection {
     	
     	
     	Map<String, Long> countries = new HashMap<>();
-    	countries.put("Africa", 1_110_635_000L);
-    	countries.put("Americas", 972_005_000L);
-    	countries.put("Antartica", 0L);
-    	countries.put("Asia", 4_298_723_000L);
-    	countries.put("Europe", 742_452_000L);
-    	countries.put("Oceania", 38_304_000L);
+    	countries.put("Africa", AFRICA_POPULATION);
+    	countries.put("Americas", AMERICAS_POPULATION);
+    	countries.put("Antartica", ANTARCTICA_POPULATION);
+    	countries.put("Asia", ASIA_POPULATION);
+    	countries.put("Europe", EUROPE_POPULATION);
+    	countries.put("Oceania", OCEANIA_POPULATION);
     	
     	System.out.println("World Population : " + getWorldPopulation(countries));
     	
