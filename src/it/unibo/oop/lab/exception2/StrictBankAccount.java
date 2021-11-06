@@ -39,6 +39,8 @@ public class StrictBankAccount implements BankAccount {
         if (checkUser(usrID)) {
             this.balance += amount;
             increaseTransactionsCount();
+        } else {
+        	throw new WrongAccountHolderException(usrID);
         }
     }
 
@@ -51,6 +53,8 @@ public class StrictBankAccount implements BankAccount {
         	if(isWithdrawAllowed(amount)) {
         		this.balance -= amount;
         		increaseTransactionsCount();
+        	} else {
+        		throw new NotEnoughFoundsException(this.balance, amount);
         	}
         } else {
         	throw new WrongAccountHolderException(usrID);
